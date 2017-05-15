@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'JYProject.user',
-    'JYProject.todo'
+    'JYProject.todo',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
