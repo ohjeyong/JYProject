@@ -10,7 +10,7 @@ class TodoSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Todo
-        fields = ('id', 'title', 'content', 'category', 'is_completed', 'complete_at', 'author', 'author_data',
+        fields = ('id', 'content', 'like', 'category', 'is_completed', 'complete_at', 'author', 'author_data',
                   'created_at', 'last_edit_at')
 
     def get_author_data(self, obj):

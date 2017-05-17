@@ -17,10 +17,9 @@ class Todo(BaseModel):
         ('PLACE', '갈 곳'),
         ('TODO', '할 것')
     )
-
-    title = models.CharField(max_length=20, blank=True)
     content = models.CharField(max_length=100)
     category = models.CharField(max_length=10, choices=CATEGORY_CHOICE)
+    like = models.PositiveIntegerField(default=0)
     is_completed = models.BooleanField(default=False)
     complete_at = models.DateTimeField(blank=True, null=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
