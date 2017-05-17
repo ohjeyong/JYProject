@@ -33,3 +33,9 @@ class TodoViewSet(viewsets.ModelViewSet):
         todo = self.get_object()
         todo.revert_complete()
         return Response(self.get_serializer(todo).data)
+
+    @detail_route(methods=['post'])
+    def add_like(self, request, pk=None):
+        todo = self.get_object()
+        todo.add_like()
+        return Response(self.get_serializer(todo).data)

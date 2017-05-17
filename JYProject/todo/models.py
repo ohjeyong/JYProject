@@ -38,3 +38,7 @@ class Todo(BaseModel):
         self.is_completed = False
         self.complete_at = None
         self.save()
+
+    def add_like(self):
+        self.like += 1
+        self.save()
