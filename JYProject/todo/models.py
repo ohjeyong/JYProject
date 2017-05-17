@@ -25,7 +25,7 @@ class Todo(BaseModel):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.title
+        return self.content[:20]
 
     def complete(self):
         if self.is_completed:
