@@ -4,8 +4,8 @@ from django.utils import timezone
 
 
 class BaseModel(models.Model):
-    created_at = models.DateTimeField(auto_now=True)
-    last_edit_at = models.DateTimeField(auto_now_add=True, help_text="Datetime that this object was last edited.")
+    created_at = models.DateTimeField(auto_now_add=True)
+    last_edit_at = models.DateTimeField(auto_now=True, help_text="Datetime that this object was last edited.")
 
     class Meta:
         abstract = True
