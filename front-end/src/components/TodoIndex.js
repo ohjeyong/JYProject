@@ -20,7 +20,7 @@ class TodoIndex extends Component {
 
     render() {
         return (
-            <ul>
+            <ul className="TodoUl">
                 {this.renderTodoList()}
             </ul>
         )

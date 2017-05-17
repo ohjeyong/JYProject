@@ -11,3 +11,52 @@ body {
     background-color: #88B04B;
     color: white;
 }
+.TodoUl{
+    list-style: none;
+    margin: auto;
+    max-width: 600px;
+}
+.TodoUl .TodoLi{
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    background: #FFF;
+    border-radius: .28571429rem;
+    box-shadow: 0 1px 3px 0 #D4D4D5, 0 0 0 1px #D4D4D5;
+}
+.TodoUl .TodoLi .TodoLeftWrapper{
+    flex: 5;
+    border-right: 1px solid rgba(0, 0, 0, 0.05);
+}
+.TodoUl .TodoLi .TodoRightWrapper{
+    flex: 1;
+    text-align: center;
+}
+.TodoUl .TodoLi .TodoLeftWrapper .upper{
+    color: rgba(0, 0, 0, 0.68);
+    padding: 20px;
+}
+.TodoUl .TodoLi .TodoLeftWrapper .upper > .like{
+    margin-left: 10px;
+    color: #aaaaaa;
+    font-size: 0.9rem;
+    cursor: pointer;
+    user-select: none;
+}
+.TodoUl .TodoLi .TodoLeftWrapper .upper > .like:hover{
+    color: tomato;
+}
+.TodoUl .TodoLi .TodoLeftWrapper .upper .TodoContent{
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+}
+.TodoUl .TodoLi .TodoLeftWrapper .lower{
+    height: 30px;
+    line-height: 30px;
+    font-size: 0.9rem;
+    color: #aaaaaa;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 0 20px;
+}
