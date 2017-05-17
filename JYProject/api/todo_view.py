@@ -26,4 +26,10 @@ class TodoViewSet(viewsets.ModelViewSet):
     def complete(self, request, pk=None):
         todo = self.get_object()
         todo.complete()
-        return Response({'complete_at': todo.complete_at})
+        return Response(self.get_serializer(todo).data)
+
+    @detail_route(methods=['post'])
+    def revert_complete(self, request, pk=None):
+        todo = self.get_object()
+        todo.revert_complete()
+        return Response(self.get_serializer(todo).data)

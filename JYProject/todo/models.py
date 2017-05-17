@@ -33,3 +33,8 @@ class Todo(BaseModel):
         self.is_completed = True
         self.complete_at = timezone.now()
         self.save()
+
+    def revert_complete(self):
+        self.is_completed = False
+        self.complete_at = None
+        self.save()
