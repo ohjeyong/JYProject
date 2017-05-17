@@ -2,7 +2,7 @@
  * Created by oh on 5/16/17.
  */
 import _ from 'lodash';
-import { FETCH_TODO_LIST, COMPLETE_TODO, REVERT_COMPLETE_TODO, REMOVE_TODO } from '../actions';
+import { FETCH_TODO_LIST, COMPLETE_TODO, REVERT_COMPLETE_TODO, REMOVE_TODO, ADD_LIKE } from '../actions';
 
 export default function(state={}, action) {
     switch (action.type){
@@ -16,6 +16,8 @@ export default function(state={}, action) {
             const newState = Object.assign({}, state);
             delete newState[action.todoId];
             return newState;
+        case ADD_LIKE:
+            return { ...state, [action.payload.data.id]: action.payload.data };
         default:
             return state
     }

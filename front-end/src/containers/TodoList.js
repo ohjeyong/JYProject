@@ -4,7 +4,7 @@
 import React, { Component } from 'react';
 import { Icon, Label, Button, Confirm } from 'semantic-ui-react';
 import TimeAgo from 'timeago-react';
-import { completeTodo, revertCompleteTodo, removeTodo } from '../actions';
+import { completeTodo, revertCompleteTodo, removeTodo, addLike } from '../actions';
 import { connect } from 'react-redux';
 
 class TodoList extends Component {
@@ -53,7 +53,7 @@ class TodoList extends Component {
                         <Label color="orange" size="mini">
                             <Icon name="food" /> 음식
                         </Label>
-                        <span className="like"><Icon name="like" />{ this.props.todo.like }</span>
+                        <span onClick={() => this.props.addLike(this.props.todo.id)} className="like"><Icon name="like" />{ this.props.todo.like }</span>
                         <div className="TodoContent">
                             { this.props.todo.content }
                         </div>
@@ -72,4 +72,4 @@ class TodoList extends Component {
 };
 
 
-export default connect(null, { completeTodo, revertCompleteTodo, removeTodo })(TodoList);
+export default connect(null, { completeTodo, revertCompleteTodo, removeTodo, addLike })(TodoList);
