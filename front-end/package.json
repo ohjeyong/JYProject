@@ -10,7 +10,8 @@
     "react-redux": "^5.0.4",
     "redux": "^3.6.0",
     "redux-promise": "^0.5.3",
-    "semantic-ui-react": "^0.68.3"
+    "semantic-ui-react": "^0.68.3",
+    "timeago-react": "^1.1.0"
   },
   "devDependencies": {
     "react-scripts": "0.9.5"
