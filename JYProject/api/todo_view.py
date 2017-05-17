@@ -1,5 +1,6 @@
 from rest_framework import status
 from rest_framework import viewsets
+from rest_framework.decorators import detail_route
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
@@ -20,3 +21,9 @@ class TodoViewSet(viewsets.ModelViewSet):
             return Response(status=status.HTTP_403_FORBIDDEN)
 
         return super(TodoViewSet, self).create(request, *args, **kwargs)
+
+    @detail_route(methods=['post'])
+    def complete(self, request, pk=None):
+        todo = self.get_object()
+        todo.complete()
+        return Response({'complete_at': todo.complete_at})
