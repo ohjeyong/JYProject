@@ -3,8 +3,6 @@
  */
 import _ from 'lodash';
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { fetchTodoList } from '../actions';
 import TodoList from './TodoList';
 
 class TodoIndex extends Component {
@@ -29,8 +27,4 @@ class TodoIndex extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    return { todoList: state.todoList }
-}
-
-export default connect(mapStateToProps, { fetchTodoList })(TodoIndex);
+export default TodoIndex;
