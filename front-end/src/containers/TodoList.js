@@ -2,24 +2,44 @@
  * Created by oh on 5/16/17.
  */
 import React, { Component } from 'react';
-import { Icon, Label, Button } from 'semantic-ui-react';
+import { Icon, Label, Button, Confirm } from 'semantic-ui-react';
 import TimeAgo from 'timeago-react';
+import { completeTodo, revertCompleteTodo, removeTodo } from '../actions';
+import { connect } from 'react-redux';
 
 class TodoList extends Component {
+    state = {open: false};
+
+    show = () => {
+        this.setState({open: true});
+    };
+    handleConfirm = (id) => {
+        this.props.removeTodo(id);
+        this.setState({open: false});
+    };
+    handleCancel = () => this.setState({open: false});
+
     renderRightWrapper = (todo) => {
         if(todo.is_completed) {
             return (
                 <div className="TodoRightWrapper">
                     <span style={{fontSize: '1.2rem', color:'teal'}}>완료</span>
                     <TimeAgo datetime={ todo.complete_at } locale="ko"/>
-                    <Button style={{marginTop: "10px"}} size="tiny" circular icon="reply" />
+                    <Button onClick={() => this.props.revertCompleteTodo(todo.id)} style={{marginTop: "10px"}} size="tiny" circular icon="reply" />
                 </div>
             )
         }else{
             return (
                 <div className="TodoRightWrapper">
-                    <Button size="tiny" positive circular icon="checkmark" />
-                    <Button size="tiny" circular icon="trash" />
+                    <Button onClick={() => this.props.completeTodo(todo.id)} size="tiny" positive circular icon="checkmark" />
+                    <Button onClick={this.show} size="tiny"  circular icon="trash" />
+                    <Confirm
+                        open={this.state.open}
+                        onCancel={this.handleCancel}
+                        onConfirm={() => this.handleConfirm(todo.id)}
+                        header={todo.content}
+                        content='정말 삭제하시겠습니까?'
+                    />
                 </div>
             )
         }
@@ -51,4 +71,5 @@ class TodoList extends Component {
     }
 };
 
-export default TodoList;
+
+export default connect(null, { completeTodo, revertCompleteTodo, removeTodo })(TodoList);

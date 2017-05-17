@@ -3,7 +3,7 @@
  */
 import _ from 'lodash';
 import React, { Component } from 'react';
-import TodoList from './TodoList';
+import TodoList from '../containers/TodoList';
 
 class TodoIndex extends Component {
     componentDidMount() {
