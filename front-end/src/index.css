@@ -15,6 +15,7 @@ body {
     list-style: none;
     margin: auto;
     max-width: 600px;
+    padding: 0;
 }
 .TodoUl .TodoLi{
     margin: 10px;
@@ -24,13 +25,36 @@ body {
     border-radius: .28571429rem;
     box-shadow: 0 1px 3px 0 #D4D4D5, 0 0 0 1px #D4D4D5;
 }
+.TodoUl .TodoLi.complete{
+    box-shadow: none;
+}
 .TodoUl .TodoLi .TodoLeftWrapper{
-    flex: 5;
+    flex: 4;
     border-right: 1px solid rgba(0, 0, 0, 0.05);
+    position: relative;
 }
 .TodoUl .TodoLi .TodoRightWrapper{
     flex: 1;
-    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.TodoUl .TodoLi .TodoLeftWrapper .mask{
+    display: none;
+}
+.TodoUl .TodoLi.complete .TodoLeftWrapper .mask{
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.7);
+}
+.TodoUl .TodoLi.complete .TodoRightWrapper{
+    flex-flow: column;
+    font-size: 0.8em;
 }
 .TodoUl .TodoLi .TodoLeftWrapper .upper{
     color: rgba(0, 0, 0, 0.68);
