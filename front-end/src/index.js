@@ -6,7 +6,7 @@ import reducers from './reducers';
 import './index.css';
 import './animation.css';
 import promise from 'redux-promise';
-import Header from './components/Header';
+import HeaderContainer from './containers/HeaderContainer';
 import TodoIndexContainer from './containers/TodoIndexContainer';
 import AlertContainer from './containers/AlertContainer';
 
@@ -15,7 +15,7 @@ const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 ReactDOM.render(
     <Provider store={createStoreWithMiddleware(reducers)}>
         <div>
-            <Header />
+            <HeaderContainer />
             <TodoIndexContainer />
             <AlertContainer />
         </div>

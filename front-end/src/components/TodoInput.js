@@ -44,6 +44,7 @@ class TodoInput extends Component{
         })
     };
     render() {
+        if(!this.props.show) return null;
         const options = [
             { key: 1, text: '먹을 곳', value:'FOOD', icon: "food" },
             { key: 2, text: '갈 곳', value:'PLACE', icon: "marker" },
@@ -65,7 +66,7 @@ class TodoInput extends Component{
                         <Button type="submit" primary size="tiny">추가하기</Button>
                     </div>
                 </Form>
-                <Icon className="TodoInputClose" name="close" />
+                <Icon onClick={this.props.hideTodoInput} className="TodoInputClose" name="close" />
             </div>
 
         )

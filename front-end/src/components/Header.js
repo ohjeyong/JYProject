@@ -4,12 +4,12 @@
 import React from 'react';
 import { Button } from 'semantic-ui-react';
 
-const Header = () => {
+const Header = (props) => {
     return (
         <div className="Header">
             <span>This is title</span>
             <span>
-                <Button icon="plus" size="small" color="brown" circular />
+                <Button onClick={() => props.showTodoInput()} icon="plus" size="small" color="brown" circular />
             </span>
         </div>
     )

@@ -63,7 +63,6 @@ class TodoList extends Component {
     render() {
         return (
             <li className={`TodoLi bounceIn animated ${this.props.todo.is_completed ? 'complete': ''}`}>
-            {/*<li className={this.props.todo.is_completed ? "TodoLi complete" : "TodoLi"}>*/}
                 <div className="TodoLeftWrapper">
                     <div className="mask"></div>
                     <div className="upper">

@@ -11,6 +11,7 @@ body {
     align-items: center;
     background-color: #88B04B;
     color: white;
+    justify-content: space-between;
 }
 .TodoUl{
     list-style: none;
@@ -71,7 +72,7 @@ body {
     color: tomato;
 }
 .TodoUl .TodoLi .TodoLeftWrapper .upper .TodoContent{
-    min-height: 50px;
+    min-height: 60px;
     display: flex;
     align-items: center;
     font-size: 1.1rem;
@@ -91,8 +92,8 @@ body {
 }
 .TodoInputWrapper .TodoInputClose{
     position: absolute;
-    top: 5px;
-    right: 5px;
+    top: 10px;
+    right: 10px;
 }
 .TodoInputWrapper .TodoInputDropdown{
     min-width: 9em !important;
@@ -102,7 +103,7 @@ body {
     font-size: inherit !important;
 }
 .TodoInputWrapper .TodoInput{
-    height: 60px !important;
+    height: 40px !important;
 }
 .Alert-wrapper{
     position: fixed;

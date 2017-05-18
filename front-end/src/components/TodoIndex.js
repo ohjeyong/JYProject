@@ -35,7 +35,7 @@ class TodoIndex extends Component {
     }
 
     renderTodoList() {
-        return _.map(this.props.todoList, todo => {
+        return _.map(_.orderBy(this.props.todoList, ['id'], ['desc']), todo => {
             return (
                 <TodoList onConfirmRemoveTodo={this.showConfirmModal} todo={todo} key={todo.id} />
             )
