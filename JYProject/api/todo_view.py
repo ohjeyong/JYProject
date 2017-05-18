@@ -17,9 +17,7 @@ class TodoViewSet(viewsets.ModelViewSet):
         return self.queryset.filter(author=self.request.user)
 
     def create(self, request, *args, **kwargs):
-        if request.data.get('author') != request.user.id:
-            return Response(status=status.HTTP_403_FORBIDDEN)
-
+        request.data['author'] = request.user.id
         return super(TodoViewSet, self).create(request, *args, **kwargs)
 
     @detail_route(methods=['post'])
