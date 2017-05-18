@@ -1,19 +1,18 @@
 /**
  * Created by oh on 5/18/17.
  */
-import { SHOW_TODO_INPUT } from '../actions';
+import { SHOW_TODO_INPUT, HIDE_TODO_INPUT } from '../actions';
 
 
-const initialState = {
-    show: false
-};
-
-export default function(state=initialState, action) {
+export default function(state={show: false}, action) {
     switch (action.type){
         case SHOW_TODO_INPUT:
             return {
-                ...state,
                 show: true
+            };
+        case HIDE_TODO_INPUT:
+            return {
+                show: false
             };
         default:
             return state

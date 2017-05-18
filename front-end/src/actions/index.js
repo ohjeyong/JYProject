@@ -14,6 +14,7 @@ export const ADD_LIKE = 'add_like';
 export const ADD_TODO = 'add_todo';
 
 export const SHOW_TODO_INPUT = 'show_todo_input';
+export const HIDE_TODO_INPUT = 'hide_todo_input';
 
 export const SHOW_ALERT = 'show_alert';
 export const HIDE_ALERT = 'hide_alert';
@@ -68,6 +69,12 @@ export function addLike(id){
 export function showTodoInput(){
     return {
         type: SHOW_TODO_INPUT,
+    }
+}
+
+export function hideTodoInput(){
+    return {
+        type: HIDE_TODO_INPUT
     }
 }
 

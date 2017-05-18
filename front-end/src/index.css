@@ -87,6 +87,12 @@ body {
 .TodoInputWrapper{
     background-color: white;
     padding: 20px;
+    position: relative;
+}
+.TodoInputWrapper .TodoInputClose{
+    position: absolute;
+    top: 5px;
+    right: 5px;
 }
 .TodoInputWrapper .TodoInputDropdown{
     min-width: 9em !important;

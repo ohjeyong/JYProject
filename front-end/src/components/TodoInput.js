@@ -2,7 +2,7 @@
  * Created by oh on 5/18/17.
  */
 import React, { Component } from 'react';
-import { Dropdown, Form, Input, Button } from 'semantic-ui-react';
+import { Dropdown, Form, Input, Button, Icon } from 'semantic-ui-react';
 
 
 class TodoInput extends Component{
@@ -65,6 +65,7 @@ class TodoInput extends Component{
                         <Button type="submit" primary size="tiny">추가하기</Button>
                     </div>
                 </Form>
+                <Icon className="TodoInputClose" name="close" />
             </div>
 
         )
