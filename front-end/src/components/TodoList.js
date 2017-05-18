@@ -33,14 +33,29 @@ class TodoList extends Component {
                         circular
                     />
                     <Button onClick={() => this.props.onConfirmRemoveTodo(todo.id)} size="tiny"  circular icon="trash" />
-                    {/*<Confirm*/}
-                        {/*open={this.state.open}*/}
-                        {/*onCancel={this.handleCancel}*/}
-                        {/*onConfirm={() => this.handleConfirm(todo.id)}*/}
-                        {/*header={todo.content}*/}
-                        {/*content='정말 삭제하시겠습니까?'*/}
-                    {/*/>*/}
                 </div>
+            )
+        }
+    };
+
+    renderCategoryIcon = (todo) => {
+        if(todo.category == 'FOOD') {
+            return (
+                <Label color="orange" size="mini">
+                    <Icon name="food" /> 먹을 곳
+                </Label>
+            )
+        }else if(todo.category == 'PLACE') {
+            return (
+                <Label color="teal" size="mini">
+                    <Icon name="marker" /> 갈 곳
+                </Label>
+            )
+        }else if(todo.category == 'TODO') {
+            return (
+                <Label color="blue" size="mini">
+                    <Icon name="star" /> 할 것
+                </Label>
             )
         }
     };
@@ -51,9 +66,7 @@ class TodoList extends Component {
                 <div className="TodoLeftWrapper">
                     <div className="mask"></div>
                     <div className="upper">
-                        <Label color="orange" size="mini">
-                            <Icon name="food" /> 음식
-                        </Label>
+                        {this.renderCategoryIcon(this.props.todo)}
                         <span onClick={() => this.props.addLike(this.props.todo.id)} className="like">
                             <Icon name="like" />{ this.props.todo.like }
                         </span>
