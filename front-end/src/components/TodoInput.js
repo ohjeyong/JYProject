@@ -29,7 +29,6 @@ class TodoInput extends Component{
     };
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state);
         if(this.state.category === ''){
             this.showAlert('카테고리를 입력해주세요.');
             return
@@ -38,6 +37,11 @@ class TodoInput extends Component{
             this.showAlert('내용을 입력해주세요.');
             return
         }
+        this.props.addTodo(this.state.category, this.state.content);
+        this.setState({
+            category: '',
+            content: ''
+        })
     };
     render() {
         const options = [
@@ -48,9 +52,10 @@ class TodoInput extends Component{
         return (
             <div className="TodoInputWrapper">
                 <Form onSubmit={e => {this.handleSubmit(e)}}>
-                    <Dropdown onChange={(e, data) => {this.setState({category: data.value})}} className="TodoInputDropdown" options={options} openOnFocus closeOnBlur placeholder="카테고리" selection />
+                    <Dropdown value={this.state.category} onChange={(e, data) => {this.setState({category: data.value})}} className="TodoInputDropdown" options={options} openOnFocus closeOnBlur placeholder="카테고리" selection />
                     <Input
                         onChange={(e, data) => {this.setState({content: data.value})}}
+                        value={this.state.content}
                         className="TodoInput"
                         placeholder="데이트를 입력해주세요."
                         transparent

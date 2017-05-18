@@ -11,6 +11,7 @@ export const COMPLETE_TODO = 'complete_todo';
 export const REVERT_COMPLETE_TODO = 'revert_complete_todo';
 export const REMOVE_TODO = 'remove_todo';
 export const ADD_LIKE = 'add_like';
+export const ADD_TODO = 'add_todo';
 
 export const SHOW_TODO_INPUT = 'show_todo_input';
 
@@ -80,5 +81,13 @@ export function showAlert(payload){
 export function hideAlert(){
     return {
         type: HIDE_ALERT
+    }
+}
+
+export function addTodo(category, content){
+    const request = axios.post(`/api/todo/`, {category: category, content: content});
+    return {
+        type: ADD_TODO,
+        payload: request
     }
 }
