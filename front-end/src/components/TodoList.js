@@ -39,19 +39,19 @@ class TodoList extends Component {
     };
 
     renderCategoryIcon = (todo) => {
-        if(todo.category == 'FOOD') {
+        if(todo.category === 'FOOD') {
             return (
                 <Label color="orange" size="mini">
                     <Icon name="food" /> 먹을 곳
                 </Label>
             )
-        }else if(todo.category == 'PLACE') {
+        }else if(todo.category === 'PLACE') {
             return (
                 <Label color="teal" size="mini">
                     <Icon name="marker" /> 갈 곳
                 </Label>
             )
-        }else if(todo.category == 'TODO') {
+        }else if(todo.category === 'TODO') {
             return (
                 <Label color="blue" size="mini">
                     <Icon name="star" /> 할 것

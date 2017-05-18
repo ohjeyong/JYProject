@@ -5,6 +5,7 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { Confirm } from 'semantic-ui-react';
 import TodoList from '../containers/TodoListContainer';
+import TodoInputContainer from '../containers/TodoInputContainer';
 
 class TodoIndex extends Component {
     state = {
@@ -43,7 +44,8 @@ class TodoIndex extends Component {
 
     render() {
         return (
-            <div>
+            <div style={{maxWidth: '600px', margin: 'auto', padding: '10px'}}>
+                <TodoInputContainer />
                 <ul className="TodoUl">
                     {this.renderTodoList()}
                 </ul>

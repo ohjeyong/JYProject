@@ -4,21 +4,21 @@ body {
     background-color: #F1F1F1;
 }
 .Header{
-    height: 70px;
-    line-height: 70px;
+    height: 60px;
     font-size: 2rem;
-    text-align: center;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
     background-color: #88B04B;
     color: white;
 }
 .TodoUl{
     list-style: none;
     margin: auto;
-    max-width: 600px;
     padding: 0;
 }
 .TodoUl .TodoLi{
-    margin: 10px;
+    margin: 10px 0;
     display: flex;
     align-items: center;
     background: #FFF;
@@ -83,4 +83,32 @@ body {
     color: #aaaaaa;
     border-top: 1px solid rgba(0, 0, 0, 0.05);
     padding: 0 15px;
+}
+.TodoInputWrapper{
+    background-color: white;
+    padding: 20px;
+}
+.TodoInputWrapper .TodoInputDropdown{
+    min-width: 9em !important;
+    font-size: 0.8rem;
+}
+.TodoInputWrapper .TodoInputDropdown .item{
+    font-size: inherit !important;
+}
+.TodoInputWrapper .TodoInput{
+    height: 60px !important;
+}
+.Alert-wrapper{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+.Alert-wrapper .Alert{
+    white-space: nowrap;
+    font-size: 1rem;
+    padding: 1.5rem;
+    border-radius: 5px;
+    font-weight: 600;
 }
