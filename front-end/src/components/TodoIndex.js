@@ -3,9 +3,32 @@
  */
 import _ from 'lodash';
 import React, { Component } from 'react';
-import TodoList from '../containers/TodoList';
+import { Confirm } from 'semantic-ui-react';
+import TodoList from '../containers/TodoListContainer';
 
 class TodoIndex extends Component {
+    state = {
+        open: false,
+        removeTargetTodoId: null
+    };
+
+    showConfirmModal = (id) => {
+        this.setState({
+            open: true,
+            removeTargetTodoId: id
+        })
+    };
+
+    handleConfirm = () => {
+        this.props.removeTodo(this.state.removeTargetTodoId);
+        this.setState({
+            open: false,
+            removeTargetTodoId: null
+        });
+    };
+
+    handleCancel = () => this.setState({open: false});
+
     componentDidMount() {
         this.props.fetchTodoList();
     }
@@ -13,16 +36,24 @@ class TodoIndex extends Component {
     renderTodoList() {
         return _.map(this.props.todoList, todo => {
             return (
-                <TodoList todo={todo} key={todo.id} />
+                <TodoList onConfirmRemoveTodo={this.showConfirmModal} todo={todo} key={todo.id} />
             )
         })
     };
 
     render() {
         return (
-            <ul className="TodoUl">
-                {this.renderTodoList()}
-            </ul>
+            <div>
+                <ul className="TodoUl">
+                    {this.renderTodoList()}
+                </ul>
+                 <Confirm
+                     open={this.state.open}
+                     onCancel={this.handleCancel}
+                     onConfirm={this.handleConfirm}
+                     content='정말 삭제하시겠습니까?'
+                 />
+            </div>
         )
     }
 }
