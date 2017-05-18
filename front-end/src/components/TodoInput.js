@@ -51,7 +51,7 @@ class TodoInput extends Component{
             { key: 3, text: '할 것', value:'TODO', icon: "star" }
         ];
         return (
-            <div className="TodoInputWrapper">
+            <div className="TodoInputWrapper animated bounceIn">
                 <Form onSubmit={e => {this.handleSubmit(e)}}>
                     <Dropdown value={this.state.category} onChange={(e, data) => {this.setState({category: data.value})}} className="TodoInputDropdown" options={options} openOnFocus closeOnBlur placeholder="카테고리" selection />
                     <Input
