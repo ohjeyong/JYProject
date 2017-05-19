@@ -11,6 +11,14 @@ class BaseModel(models.Model):
         abstract = True
 
 
+class Tag(BaseModel):
+    name = models.CharField(max_length=10, unique=True)
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
+
+
 class Todo(BaseModel):
     CATEGORY_CHOICE = (
         ('FOOD', '먹을 곳'),
@@ -23,6 +31,7 @@ class Todo(BaseModel):
     is_completed = models.BooleanField(default=False)
     complete_at = models.DateTimeField(blank=True, null=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    tag = models.ManyToManyField(Tag, blank=True)
 
     def __str__(self):
         return self.content[:20]
@@ -42,3 +51,5 @@ class Todo(BaseModel):
     def add_like(self):
         self.like += 1
         self.save()
+
+
