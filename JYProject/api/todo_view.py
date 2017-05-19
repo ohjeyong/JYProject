@@ -1,3 +1,4 @@
+from rest_framework import status
 from rest_framework import viewsets, generics
 from rest_framework.decorators import detail_route
 from rest_framework.permissions import IsAuthenticated
@@ -16,8 +17,23 @@ class TodoViewSet(viewsets.ModelViewSet):
         return self.queryset.filter(author=self.request.user)
 
     def create(self, request, *args, **kwargs):
-        request.data['author'] = request.user.id
-        return super(TodoViewSet, self).create(request, *args, **kwargs)
+        obj = Todo.objects.create(
+            category=request.data['category'],
+            content=request.data['content'],
+            author=request.user
+        )
+        tag_list = list()
+        for each_tag in request.data['tags']:
+            tag = Tag.objects.filter(name=each_tag)
+            if not tag:
+                tag = Tag.objects.create(
+                    name=each_tag,
+                    created_by=request.user
+                )
+            tag_list.append(tag)
+        for each in tag_list:
+            obj.tag.add(each)
+        return Response(TodoSerializer(obj).data, status=status.HTTP_201_CREATED)
 
     @detail_route(methods=['post'])
     def complete(self, request, pk=None):

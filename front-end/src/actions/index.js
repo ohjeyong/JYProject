@@ -96,8 +96,8 @@ export function hideAlert(){
     }
 }
 
-export function addTodo(category, content){
-    const request = axios.post(`/api/todo/`, {category: category, content: content});
+export function addTodo(category, content, tags){
+    const request = axios.post(`/api/todo/`, {category: category, content: content, tags: tags});
     return {
         type: ADD_TODO,
         payload: request

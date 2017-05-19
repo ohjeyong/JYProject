@@ -1,6 +1,7 @@
 /**
  * Created by oh on 5/18/17.
  */
+import _ from 'lodash';
 import React, { Component } from 'react';
 import { Dropdown, Form, Input, Button, Icon } from 'semantic-ui-react';
 import { WithContext as ReactTags } from 'react-tag-input';
@@ -70,10 +71,15 @@ class TodoInput extends Component{
             this.showAlert('내용을 입력해주세요.');
             return
         }
-        this.props.addTodo(this.state.category, this.state.content);
+        const tagList = [];
+        _.map(this.state.tags, tag => {
+            tagList.push(tag.text)
+        });
+        this.props.addTodo(this.state.category, this.state.content, tagList);
         this.setState({
             category: '',
-            content: ''
+            content: '',
+            tags: []
         })
     };
     render() {
