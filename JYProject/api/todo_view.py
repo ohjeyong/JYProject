@@ -25,12 +25,14 @@ class TodoViewSet(viewsets.ModelViewSet):
         tag_list = list()
         for each_tag in request.data['tags']:
             tag = Tag.objects.filter(name=each_tag)
+            if tag:
+                tag_list.append(tag.last())
             if not tag:
                 tag = Tag.objects.create(
                     name=each_tag,
                     created_by=request.user
                 )
-            tag_list.append(tag)
+                tag_list.append(tag)
         for each in tag_list:
             obj.tag.add(each)
         return Response(TodoSerializer(obj).data, status=status.HTTP_201_CREATED)

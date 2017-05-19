@@ -80,7 +80,8 @@ class TodoInput extends Component{
             category: '',
             content: '',
             tags: []
-        })
+        });
+        this.props.fetchTagList();
     };
     render() {
         if(!this.props.show) return null;
