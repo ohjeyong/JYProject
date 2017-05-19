@@ -3,7 +3,7 @@
  */
 import _ from 'lodash';
 import React, { Component } from 'react';
-import { Confirm } from 'semantic-ui-react';
+import { Confirm, Header } from 'semantic-ui-react';
 import TodoList from '../containers/TodoListContainer';
 import TodoInputContainer from '../containers/TodoInputContainer';
 import Filter from '../components/Filter';
@@ -35,43 +35,48 @@ class TodoIndex extends Component {
         this.props.fetchTodoList();
     }
 
-    renderTodoList() {
-        const orderedList = _.orderBy(this.props.todoList, ['id'], 'desc');
+    filterTodo = () => {
         const filterCategory = this.props.filter.category;
         const filterCompleteState = this.props.filter.completeState;
-        console.log(filterCompleteState);
-        return _.map(orderedList, todo => {
-            if(filterCategory === 'ALL'){
+        const filteredTodoObject = {};
+        _.map(this.props.todoList, todo => {
+            if(todo.category === filterCategory || filterCategory == 'ALL'){
                 if(filterCompleteState === '0'){
-                    return (
-                        <TodoList onConfirmRemoveTodo={this.showConfirmModal} todo={todo} key={todo.id} />
-                    )
+                    filteredTodoObject[todo.id] = todo
                 }else if(filterCompleteState === '1' && !todo.is_completed){
-                    return (
-                        <TodoList onConfirmRemoveTodo={this.showConfirmModal} todo={todo} key={todo.id} />
-                    )
+                    filteredTodoObject[todo.id] = todo
                 }else if(filterCompleteState === '2' && todo.is_completed){
-                    return (
-                        <TodoList onConfirmRemoveTodo={this.showConfirmModal} todo={todo} key={todo.id} />
-                    )
-                }
-            }else{
-                if(filterCategory === todo.category) {
-                    if(filterCompleteState === '0') {
-                        return (
-                            <TodoList onConfirmRemoveTodo={this.showConfirmModal} todo={todo} key={todo.id}/>
-                        )
-                    }else if(filterCompleteState === '1' && !todo.is_completed){
-                        return (
-                            <TodoList onConfirmRemoveTodo={this.showConfirmModal} todo={todo} key={todo.id} />
-                        )
-                    }else if(filterCompleteState === '2' && todo.is_completed){
-                        return (
-                            <TodoList onConfirmRemoveTodo={this.showConfirmModal} todo={todo} key={todo.id} />
-                        )
-                    }
+                    filteredTodoObject[todo.id] = todo
                 }
             }
+        });
+        return filteredTodoObject;
+    };
+
+    renderTodoList() {
+        const filteredTodoList = this.filterTodo();
+        if(Object.keys(filteredTodoList).length === 0) {
+            const style = {
+                position: 'absolute',
+                top: '0',
+                left: '0',
+                right: '0',
+                bottom: '0',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+            };
+            return (
+                <Header style={style} as="h4" disabled>
+                    표시할 TODO가 없습니다.
+                </Header>
+            )
+        }
+        const orderedList = _.orderBy(filteredTodoList, ['id'], 'desc');
+        return _.map(orderedList, todo => {
+            return (
+                <TodoList onConfirmRemoveTodo={this.showConfirmModal} todo={todo} key={todo.id} />
+            )
         })
     };
 
