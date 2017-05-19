@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 import { Confirm } from 'semantic-ui-react';
 import TodoList from '../containers/TodoListContainer';
 import TodoInputContainer from '../containers/TodoInputContainer';
-import Filter from './Filter';
+import Filter from '../components/Filter';
 
 class TodoIndex extends Component {
     state = {

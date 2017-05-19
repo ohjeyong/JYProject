@@ -19,6 +19,8 @@ export const HIDE_TODO_INPUT = 'hide_todo_input';
 export const SHOW_ALERT = 'show_alert';
 export const HIDE_ALERT = 'hide_alert';
 
+export const FILTER_CATEGORY = 'filter_category';
+
 export function fetchTodoList(){
     const request = axios.get('/api/todo/');
 
@@ -96,5 +98,12 @@ export function addTodo(category, content){
     return {
         type: ADD_TODO,
         payload: request
+    }
+}
+
+export function filterCategory(category){
+    return {
+        type: FILTER_CATEGORY,
+        category
     }
 }

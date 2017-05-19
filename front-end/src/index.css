@@ -125,22 +125,27 @@ body {
 }
 .FilterWrapper .FilterUpper{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
+    position: relative;
 }
 .FilterWrapper .FilterUpper .CategoryFilter{
-    border-radius: 15px;
     padding: 3px 5px;
-    border: 1px solid black;
     flex: 1;
     text-align: center;
-    margin: 0 5px;
+    color: gray;
+    transition: color 0.5s;
+    z-index: 1;
 }
-.FilterWrapper .FilterUpper .CategoryFilter:first-child{
-    margin-left: 0;
-}
-.FilterWrapper .FilterUpper .CategoryFilter:last-child{
-    margin-right: 0;
+.FilterWrapper .FilterUpper .CategoryMovingBorder{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 25%;
+    border: 1px solid black;
+    border-radius: 15px;
+    transition: left 0.5s, border-color 0.5s;
 }
 .FilterWrapper .FilterLower{
     font-size: 1rem;
