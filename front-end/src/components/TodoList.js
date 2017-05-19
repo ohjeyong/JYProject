@@ -1,6 +1,7 @@
 /**
  * Created by oh on 5/18/17.
  */
+import _ from 'lodash';
 import React, { Component } from 'react';
 import { Icon, Label, Button } from 'semantic-ui-react';
 import TimeAgo from 'timeago-react';
@@ -60,6 +61,18 @@ class TodoList extends Component {
         }
     };
 
+    renderTags = () => {
+        return (
+            <Label.Group className="TodoTagGroup" tag>
+                {_.map(this.props.todo.tag_list, tag => {
+                    return (
+                        <Label key={tag.id} as="span">{ tag.name }</Label>
+                    )
+                })}
+            </Label.Group>
+        )
+    };
+
     render() {
         return (
             <li className={`TodoLi bounceIn animated ${this.props.todo.is_completed ? 'complete': ''}`}>
@@ -73,6 +86,7 @@ class TodoList extends Component {
                         <div className="TodoContent">
                             { this.props.todo.content }
                         </div>
+                        { this.renderTags() }
                     </div>
                     <div className="lower">
                         <TimeAgo datetime={ this.props.todo.created_at } locale="ko" />

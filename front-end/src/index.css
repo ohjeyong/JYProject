@@ -154,3 +154,6 @@ body {
     align-items: center;
     padding: 10px 0 5px 0;
 }
+.TodoTagGroup .label{
+    font-size: 0.7rem !important;
+}
