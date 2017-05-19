@@ -3,6 +3,7 @@
  */
 import React, { Component } from 'react';
 import { Dropdown, Form, Input, Button, Icon } from 'semantic-ui-react';
+import { WithContext as ReactTags } from 'react-tag-input';
 
 
 class TodoInput extends Component{
@@ -10,9 +11,41 @@ class TodoInput extends Component{
         super(props);
         this.state = {
             category: "",
-            content: ""
+            content: "",
+            tags: [],
+            tagSuggestions: []
         }
     }
+
+    componentDidMount(){
+        this.props.fetchTagList();
+    }
+
+    componentWillReceiveProps(nextProps){
+        this.setState({
+            tagSuggestions: nextProps.tagList
+        })
+    }
+
+    handleTagDelete = (i) => {
+        let tags = this.state.tags;
+        tags.splice(i, 1);
+        this.setState({
+            tags: tags
+        })
+    };
+
+    handleTagAddition = (tag) => {
+        let tags =this.state.tags;
+        tags.push({
+            id: tags.length + 1,
+            text: tag
+        });
+        this.setState({
+            tags: tags
+        })
+    };
+
     showAlert = (message) => {
         const alertPayload = {
             fontColor: 'white',
@@ -63,6 +96,11 @@ class TodoInput extends Component{
                         fluid
                     />
                     <div style={{textAlign: 'right'}}>
+                        <ReactTags
+                            handleDelete={this.handleTagDelete}
+                            handleAddition={this.handleTagAddition}
+                            suggestions={this.state.tagSuggestions}
+                            tags={this.state.tags} />
                         <Button type="submit" primary size="tiny">추가하기</Button>
                     </div>
                 </Form>

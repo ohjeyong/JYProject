@@ -22,6 +22,8 @@ export const HIDE_ALERT = 'hide_alert';
 export const FILTER_CATEGORY = 'filter_category';
 export const FILTER_COMPLETE_STATE = 'filter_complete_state';
 
+export const FETCH_TAG_LIST = 'fetch_tag_list';
+
 export function fetchTodoList(){
     const request = axios.get('/api/todo/');
 
@@ -113,5 +115,13 @@ export function filterCompleteState(completeState){
     return {
         type: FILTER_COMPLETE_STATE,
         completeState
+    }
+}
+
+export function fetchTagList(){
+    const request = axios.get('/api/tag/');
+    return {
+        type: FETCH_TAG_LIST,
+        payload: request
     }
 }
