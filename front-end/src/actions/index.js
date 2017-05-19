@@ -20,6 +20,7 @@ export const SHOW_ALERT = 'show_alert';
 export const HIDE_ALERT = 'hide_alert';
 
 export const FILTER_CATEGORY = 'filter_category';
+export const FILTER_COMPLETE_STATE = 'filter_complete_state';
 
 export function fetchTodoList(){
     const request = axios.get('/api/todo/');
@@ -105,5 +106,12 @@ export function filterCategory(category){
     return {
         type: FILTER_CATEGORY,
         category
+    };
+}
+
+export function filterCompleteState(completeState){
+    return {
+        type: FILTER_COMPLETE_STATE,
+        completeState
     }
 }

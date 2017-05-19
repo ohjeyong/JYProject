@@ -1,11 +1,11 @@
 /**
  * Created by oh on 5/19/17.
  */
-import { FILTER_CATEGORY } from '../actions';
+import { FILTER_CATEGORY, FILTER_COMPLETE_STATE } from '../actions';
 
 const initialState = {
     category: 'ALL',
-    completeState: 'all',
+    completeState: '1',
     term: ''
 };
 
@@ -15,6 +15,11 @@ export default function(state=initialState, action) {
             return {
                 ...state,
                 category: action.category
+            };
+        case FILTER_COMPLETE_STATE:
+            return {
+                ...state,
+                completeState: action.completeState
             };
         default:
             return state
