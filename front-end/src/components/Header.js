@@ -7,7 +7,7 @@ import { Button } from 'semantic-ui-react';
 const Header = (props) => {
     return (
         <div className="Header">
-            <span>This is title</span>
+            <span>JY Couple</span>
             <span>
                 <Button onClick={() => props.showTodoInput()} icon="plus" size="small" color="brown" circular />
             </span>

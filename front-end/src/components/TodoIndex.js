@@ -64,11 +64,13 @@ class TodoIndex extends Component {
                 bottom: '0',
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'center'
+                justifyContent: 'center',
+                textAlign: 'center'
             };
             return (
                 <Header style={style} as="h4" disabled>
-                    표시할 TODO가 없습니다.
+                    표시할 TODO가 없습니다.<br />
+                    필터를 다르게 적용해보세요.
                 </Header>
             )
         }
