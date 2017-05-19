@@ -193,6 +193,9 @@ body {
     padding: 5px 10px;
     border-bottom: 1px solid #DDDDDD;
 }
+.TodoInputWrapper .ReactTags__suggestions ul li.ReactTags__activeSuggestion {
+    background: #EEEEEE;
+}
 .TodoInputWrapper .ReactTags__suggestions ul li mark{
     font-weight: 600;
     text-decoration: underline;
