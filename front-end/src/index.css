@@ -89,6 +89,7 @@ body {
     background-color: white;
     padding: 20px;
     position: relative;
+    z-index: 1;
 }
 .TodoInputWrapper .TodoInputClose{
     position: absolute;
@@ -157,3 +158,47 @@ body {
 .TodoTagGroup .label{
     font-size: 0.7rem !important;
 }
+
+.TodoInputWrapper .TodoInputBottom{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.TodoInputWrapper .ReactTags__tags {
+    flex: 5;
+}
+.TodoInputWrapper .ReactTags__selected .ReactTags__tagInputField {
+    font-size: 0.8rem !important;
+}
+.TodoInputWrapper .ReactTags__selected .ReactTags__remove {
+    margin-left: 5px;
+}
+.TodoInputWrapper .ReactTags__selected .label {
+    font-size: 0.7rem !important;
+}
+.TodoInputWrapper .ReactTags__suggestions {
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 0.8rem;
+}
+.TodoInputWrapper .ReactTags__suggestions ul {
+    list-style: none;
+    padding: 0;
+    margin: 14px 0;
+    box-shadow: 0.05em 0.01em 0.5em rgba(0, 0, 0, 0.2);
+    background: white;
+}
+.TodoInputWrapper .ReactTags__suggestions ul li {
+    padding: 5px 10px;
+    border-bottom: 1px solid #DDDDDD;
+}
+.TodoInputWrapper .ReactTags__suggestions ul li mark{
+    font-weight: 600;
+    text-decoration: underline;
+    background: none;
+}
+
+
+
+

@@ -95,13 +95,18 @@ class TodoInput extends Component{
                         transparent
                         fluid
                     />
-                    <div style={{textAlign: 'right'}}>
+                    <div className="TodoInputBottom">
                         <ReactTags
+                            classNames={{
+                                tag: 'ui label',
+                                tagInput: 'ui transparent input'
+                            }}
+                            autofocus={false}
                             handleDelete={this.handleTagDelete}
                             handleAddition={this.handleTagAddition}
                             suggestions={this.state.tagSuggestions}
                             tags={this.state.tags} />
-                        <Button type="submit" primary size="tiny">추가하기</Button>
+                        <Button style={{flex: '1'}} type="submit" primary size="tiny">추가하기</Button>
                     </div>
                 </Form>
                 <Icon onClick={this.props.hideTodoInput} className="TodoInputClose" name="close" />
