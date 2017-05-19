@@ -8,7 +8,8 @@ import TodoIndex from '../components/TodoIndex';
 
 const mapStateToProps = (state) => {
     return {
-        todoList: state.todoList
+        todoList: state.todoList,
+        filter: state.todoFilter
     }
 };
 

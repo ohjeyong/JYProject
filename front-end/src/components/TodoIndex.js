@@ -36,10 +36,20 @@ class TodoIndex extends Component {
     }
 
     renderTodoList() {
-        return _.map(_.orderBy(this.props.todoList, ['id'], ['desc']), todo => {
-            return (
-                <TodoList onConfirmRemoveTodo={this.showConfirmModal} todo={todo} key={todo.id} />
-            )
+        const orderedList = _.orderBy(this.props.todoList, ['id'], 'desc');
+        const filterCategory = this.props.filter.category;
+        return _.map(orderedList, todo => {
+            if(filterCategory === 'ALL'){
+                return (
+                    <TodoList onConfirmRemoveTodo={this.showConfirmModal} todo={todo} key={todo.id} />
+                )
+            }else{
+                if(filterCategory === todo.category) {
+                    return (
+                        <TodoList onConfirmRemoveTodo={this.showConfirmModal} todo={todo} key={todo.id} />
+                    )
+                }
+            }
         })
     };
 
