@@ -120,3 +120,32 @@ body {
     border-radius: 5px;
     font-weight: 600;
 }
+.FilterWrapper{
+    font-size: 0.8rem;
+}
+.FilterWrapper .FilterUpper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.FilterWrapper .FilterUpper .CategoryFilter{
+    border-radius: 15px;
+    padding: 3px 5px;
+    border: 1px solid black;
+    flex: 1;
+    text-align: center;
+    margin: 0 5px;
+}
+.FilterWrapper .FilterUpper .CategoryFilter:first-child{
+    margin-left: 0;
+}
+.FilterWrapper .FilterUpper .CategoryFilter:last-child{
+    margin-right: 0;
+}
+.FilterWrapper .FilterLower{
+    font-size: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0 5px 0;
+}

@@ -6,6 +6,7 @@ import React, { Component } from 'react';
 import { Confirm } from 'semantic-ui-react';
 import TodoList from '../containers/TodoListContainer';
 import TodoInputContainer from '../containers/TodoInputContainer';
+import Filter from './Filter';
 
 class TodoIndex extends Component {
     state = {
@@ -45,6 +46,7 @@ class TodoIndex extends Component {
     render() {
         return (
             <div style={{maxWidth: '600px', margin: 'auto', padding: '10px'}}>
+                <Filter />
                 <TodoInputContainer />
                 <ul className="TodoUl">
                     {this.renderTodoList()}
