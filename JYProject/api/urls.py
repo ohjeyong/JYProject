@@ -8,4 +8,5 @@ router.register(r'todo', todo_view.TodoViewSet)
 
 urlpatterns = [
     url(r'^', include(router.urls)),
+    url(r'^tag/$', todo_view.TagListView.as_view(), name='tag_list')
 ]

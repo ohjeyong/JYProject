@@ -1,11 +1,10 @@
-from rest_framework import status
-from rest_framework import viewsets
+from rest_framework import viewsets, generics
 from rest_framework.decorators import detail_route
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
-from JYProject.todo.models import Todo
-from .todo_serializer import TodoSerializer
+from JYProject.todo.models import Todo, Tag
+from .todo_serializer import TodoSerializer, TagSerializer
 
 
 class TodoViewSet(viewsets.ModelViewSet):
@@ -37,3 +36,9 @@ class TodoViewSet(viewsets.ModelViewSet):
         todo = self.get_object()
         todo.add_like()
         return Response(self.get_serializer(todo).data)
+
+
+class TagListView(generics.ListAPIView):
+    queryset = Tag.objects.all()
+    serializer_class = TagSerializer
+    permission_classes = [IsAuthenticated]
