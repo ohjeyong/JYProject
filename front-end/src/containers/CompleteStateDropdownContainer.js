@@ -13,7 +13,7 @@ const CompleteStateDropdownContainer = (props) => {
         {key: 3, text: '완료만 보기', value: '2'},
     ];
     return (
-        <Dropdown onChange={(e, data) => props.filterCompleteState(data.value) } options={options} defaultValue='1' />
+        <Dropdown onChange={(e, data) => props.filterCompleteState(data.value) } options={options} defaultValue='0' />
     );
 }
 
