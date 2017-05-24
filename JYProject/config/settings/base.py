@@ -33,6 +33,7 @@ def get_config(settings, config_file=secrets):
     except KeyError:
         raise ImproperlyConfigured("Set the {} environment variable.".format(settings))
 
+STAGE = get_config('STAGE')
 
 SECRET_KEY = get_config("SECRET_KEY")
 

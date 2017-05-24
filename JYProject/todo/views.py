@@ -1,10 +1,9 @@
-import os
 import logging
+import os
 
-from django.http import HttpResponse
-
-from django.views.generic import View
 from django.conf import settings
+from django.http import HttpResponse
+from django.views.generic import View
 
 
 # Create your views here.
