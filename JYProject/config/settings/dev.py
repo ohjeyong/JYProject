@@ -31,8 +31,3 @@ def dev_cors_middleware(get_response):
 
 MIDDLEWARE.append('JYProject.config.settings.dev.dev_cors_middleware')
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
-]
-
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
