@@ -21,6 +21,7 @@ export const HIDE_ALERT = 'hide_alert';
 
 export const FILTER_CATEGORY = 'filter_category';
 export const FILTER_COMPLETE_STATE = 'filter_complete_state';
+export const FILTER_SEARCH_INPUT = 'filter_search_input';
 
 export const FETCH_TAG_LIST = 'fetch_tag_list';
 
@@ -115,6 +116,13 @@ export function filterCompleteState(completeState){
     return {
         type: FILTER_COMPLETE_STATE,
         completeState
+    }
+}
+
+export function filterSearchInput(term){
+    return {
+        type: FILTER_SEARCH_INPUT,
+        term
     }
 }
 

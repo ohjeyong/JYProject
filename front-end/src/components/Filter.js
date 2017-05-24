@@ -2,10 +2,10 @@
  * Created by oh on 5/19/17.
  */
 import React, { Component } from 'react';
-import { Input } from 'semantic-ui-react';
 import FilterCategoryContainer from '../containers/FilterCategoryContainer';
 import CategoryMovingBorderContainer from '../containers/CategoryMovingBorderContainer';
 import CompleteStateDropdownContainer from '../containers/CompleteStateDropdownContainer';
+import FilterSearchInputContainer from '../containers/FilterSearchInputContainer';
 
 class Filter extends Component {
     render() {
@@ -20,7 +20,7 @@ class Filter extends Component {
                 </div>
                 <div className="FilterLower">
                     <CompleteStateDropdownContainer />
-                    <Input className="FilterInput" icon="search" transparent placeholder="Search ..." />
+                    <FilterSearchInputContainer/>
                 </div>
             </div>
         )

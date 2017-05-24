@@ -38,9 +38,10 @@ class TodoIndex extends Component {
     filterTodo = () => {
         const filterCategory = this.props.filter.category;
         const filterCompleteState = this.props.filter.completeState;
+        const filterTerm = this.props.filter.term;
         const filteredTodoObject = {};
         _.map(this.props.todoList, todo => {
-            if(todo.category === filterCategory || filterCategory === 'ALL'){
+            if((todo.category === filterCategory || filterCategory === 'ALL') && (filterTerm === "" || todo.content.indexOf(filterTerm) !== -1)){
                 if(filterCompleteState === '0'){
                     filteredTodoObject[todo.id] = todo
                 }else if(filterCompleteState === '1' && !todo.is_completed){
