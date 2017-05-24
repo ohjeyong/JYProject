@@ -35,13 +35,28 @@ class TodoIndex extends Component {
         this.props.fetchTodoList();
     }
 
+    _canPassByFilterInput(todo, filterTerm){
+        if(filterTerm === "" || todo.content.indexOf(filterTerm) !== -1){
+            return true
+        }
+        if(filterTerm.indexOf('#') === 0 && filterTerm.length > 1){
+            const searchTag = filterTerm.split('#')[1];
+            for(let eachTag of todo.tag_list){
+                if(eachTag.name.indexOf(searchTag) !== -1){
+                    return true
+                }
+            }
+        }
+        return false
+    }
+
     filterTodo = () => {
         const filterCategory = this.props.filter.category;
         const filterCompleteState = this.props.filter.completeState;
         const filterTerm = this.props.filter.term;
         const filteredTodoObject = {};
         _.map(this.props.todoList, todo => {
-            if((todo.category === filterCategory || filterCategory === 'ALL') && (filterTerm === "" || todo.content.indexOf(filterTerm) !== -1)){
+            if((todo.category === filterCategory || filterCategory === 'ALL') && this._canPassByFilterInput(todo, filterTerm)){
                 if(filterCompleteState === '0'){
                     filteredTodoObject[todo.id] = todo
                 }else if(filterCompleteState === '1' && !todo.is_completed){
@@ -59,10 +74,9 @@ class TodoIndex extends Component {
         if(Object.keys(filteredTodoList).length === 0) {
             const style = {
                 position: 'absolute',
-                top: '0',
+                top: '50%',
                 left: '0',
                 right: '0',
-                bottom: '0',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',

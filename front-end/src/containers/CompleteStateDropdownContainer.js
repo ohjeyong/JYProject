@@ -15,6 +15,6 @@ const CompleteStateDropdownContainer = (props) => {
     return (
         <Dropdown onChange={(e, data) => props.filterCompleteState(data.value) } options={options} defaultValue='0' />
     );
-}
+};
 
 export default connect(null, { filterCompleteState })(CompleteStateDropdownContainer);
