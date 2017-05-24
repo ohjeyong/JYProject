@@ -23,6 +23,6 @@ from JYProject.todo import views as todo_view
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api/', include('JYProject.api.urls', namespace='api')),
-    url(r'^', todo_view.FrontendAppView.as_view(), name='frontend')
+    url(r'^$', todo_view.FrontendAppView.as_view(), name='frontend')
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
