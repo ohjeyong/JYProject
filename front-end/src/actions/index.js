@@ -25,6 +25,8 @@ export const FILTER_SEARCH_INPUT = 'filter_search_input';
 
 export const FETCH_TAG_LIST = 'fetch_tag_list';
 
+export const FETCH_USER_INFO = 'fetch_user_info';
+
 export function fetchTodoList(){
     const request = axios.get('/api/todo/');
 
@@ -130,6 +132,14 @@ export function fetchTagList(){
     const request = axios.get('/api/tag/');
     return {
         type: FETCH_TAG_LIST,
+        payload: request
+    }
+}
+
+export function fetchUserInfo(){
+    const request = axios.get('/api/user/me');
+    return {
+        type: FETCH_USER_INFO,
         payload: request
     }
 }
