@@ -113,7 +113,7 @@ class TodoInput extends Component{
                             handleAddition={this.handleTagAddition}
                             suggestions={this.state.tagSuggestions}
                             tags={this.state.tags} />
-                        <Button style={{flex: '1'}} type="submit" primary size="tiny">추가하기</Button>
+                        <Button style={{flex: '1', fontSize: '0.7rem'}} type="submit" primary size="tiny">추가하기</Button>
                     </div>
                 </Form>
                 <Icon onClick={this.props.hideTodoInput} className="TodoInputClose" name="close" />
