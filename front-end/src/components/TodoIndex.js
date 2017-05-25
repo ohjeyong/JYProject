@@ -29,12 +29,6 @@ class TodoIndex extends Component {
         });
     };
 
-    componentWillReceiveProps(nextProps){
-        if(nextProps.user.id !== this.props.user.id){
-            this.props.fetchTodoList();
-        }
-    }
-
     handleCancel = () => this.setState({open: false});
 
     _canPassByFilterInput(todo, filterTerm){

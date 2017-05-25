@@ -3,6 +3,12 @@
  */
 import Header from '../components/Header';
 import { connect } from 'react-redux';
-import { showTodoInput } from '../actions';
+import { showTodoInput, fetchUserInfo, fetchTodoList } from '../actions';
 
-export default connect(null, { showTodoInput })(Header);
+function mapStateToProps(state){
+    return {
+        user: state.user
+    }
+}
+
+export default connect(mapStateToProps, { showTodoInput, fetchUserInfo, fetchTodoList })(Header);
