@@ -12,13 +12,21 @@ class Header extends Component {
             }
         });
     }
+    renderUserButton = () => {
+        if(this.props.user.id){
+            return null
+        }else{
+            return (<Button icon="user" size="small" color="grey" circular />)
+        }
+    };
     render() {
         return (
             <div className="Header">
                 <span>JY Couple</span>
                 <span>
-                <Button onClick={() => this.props.showTodoInput()} icon="plus" size="small" color="brown" circular />
-            </span>
+                    {this.renderUserButton()}
+                    <Button onClick={() => this.props.showTodoInput()} icon="plus" size="small" color="brown" circular />
+                </span>
             </div>
         )
     }
