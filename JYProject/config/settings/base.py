@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-with open("django_config.json") as f:
+with open("{}/{}".format(os.path.dirname(BASE_DIR), 'django_config.json')) as f:
     secrets = json.loads(f.read())
 
 
