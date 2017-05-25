@@ -29,11 +29,13 @@ class TodoIndex extends Component {
         });
     };
 
-    handleCancel = () => this.setState({open: false});
-
-    componentDidMount() {
-        this.props.fetchTodoList();
+    componentWillReceiveProps(nextProps){
+        if(nextProps.user.id !== this.props.user.id){
+            this.props.fetchTodoList();
+        }
     }
+
+    handleCancel = () => this.setState({open: false});
 
     _canPassByFilterInput(todo, filterTerm){
         if(filterTerm === "" || todo.content.indexOf(filterTerm) !== -1){
