@@ -26,19 +26,19 @@ class UserViewSet(viewsets.ModelViewSet):
             return Response({"error": e.detail})
 
     def list(self, request, *args, **kwargs):
-        return Response(status=status.HTTP_403_FORBIDDEN)
+        return Response(status=status.HTTP_404_NOT_FOUND)
 
     def destroy(self, request, *args, **kwargs):
-        return Response(status=status.HTTP_403_FORBIDDEN)
+        return Response(status=status.HTTP_404_NOT_FOUND)
 
     def update(self, request, *args, **kwargs):
-        return Response(status=status.HTTP_403_FORBIDDEN)
+        return Response(status=status.HTTP_404_NOT_FOUND)
 
     def partial_update(self, request, *args, **kwargs):
-        return Response(status=status.HTTP_403_FORBIDDEN)
+        return Response(status=status.HTTP_404_NOT_FOUND)
 
     def retrieve(self, request, *args, **kwargs):
-        return Response(status=status.HTTP_403_FORBIDDEN)
+        return Response(status=status.HTTP_404_NOT_FOUND)
 
     @list_route()
     def me(self, request):
