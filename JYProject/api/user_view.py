@@ -47,4 +47,4 @@ class UserViewSet(viewsets.ModelViewSet):
             serializer = self.get_serializer(instance)
             return Response(serializer.data)
         else:
-            return Response(None)
+            return Response(dict())
