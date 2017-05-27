@@ -28,6 +28,7 @@ export const FETCH_TAG_LIST = 'fetch_tag_list';
 
 export const FETCH_USER_INFO = 'fetch_user_info';
 export const LOGOUT = 'logout';
+export const LOGIN = 'login';
 
 export function fetchTodoList(){
     const request = axios.get('/api/todo/');
@@ -156,6 +157,14 @@ export function logout(){
     const request = axios.get('/api/user/logout');
     return {
         type: LOGOUT,
+        payload: request
+    }
+}
+
+export function login(data){
+    const request = axios.post('/api/user/login/', data);
+    return {
+        type: LOGIN,
         payload: request
     }
 }

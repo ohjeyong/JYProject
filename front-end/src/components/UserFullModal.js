@@ -37,14 +37,67 @@ class UserFullModal extends Component {
 
     handleLoginSignupChange = (e, { name, value }) => this.setState({[name]: value});
 
+    showAlert = (message) => {
+        const alertPayload = {
+            fontColor: 'white',
+            backgroundColor: 'rgba(255, 99, 71, 0.9)',
+            visibility: true,
+            message
+        };
+        this.props.showAlert(alertPayload);
+        setTimeout(
+            () => {
+                this.props.hideAlert();
+            }, 2000
+        )
+    };
+
     handleClickLoginButton = (e) => {
         e.preventDefault();
-        console.log(this.state);
+        this.props.login({
+            id: this.state.loginId,
+            password: this.state.loginPassword
+        }).then(() => {
+            if(this.props.user.error){
+                this.showAlert(this.props.user.error);
+            }else{
+                this.handleClose();
+                this.setState({
+                    showLoginForm: true,
+                    loginId: '',
+                    loginPassword: '',
+                    signupId: '',
+                    signupName: '',
+                    signupPassword: '',
+                    signupPassword2: ''
+                })
+            }
+        });
     };
 
     handleClickSignupButton = (e) => {
         e.preventDefault();
-        console.log(this.state);
+        this.props.signup({
+            id: this.state.signupId,
+            name: this.state.signupName,
+            password: this.state.signupPassword,
+            password2: this.state.signupPassword2
+        }).then(() => {
+            if(this.props.user.error){
+                this.showAlert(this.props.user.error);
+            }else{
+                this.handleClose();
+                this.setState({
+                    showLoginForm: true,
+                    loginId: '',
+                    loginPassword: '',
+                    signupId: '',
+                    signupName: '',
+                    signupPassword: '',
+                    signupPassword2: ''
+                })
+            }
+        });
     };
 
     renderLoginSignupForm = () => {
