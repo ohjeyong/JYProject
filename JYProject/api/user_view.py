@@ -1,3 +1,5 @@
+from django.contrib.auth import logout
+
 from rest_framework import status
 from rest_framework import viewsets
 from rest_framework.decorators import list_route
@@ -48,3 +50,8 @@ class UserViewSet(viewsets.ModelViewSet):
             return Response(serializer.data)
         else:
             return Response(dict())
+
+    @list_route()
+    def logout(self, request):
+        logout(request)
+        return Response(None)
