@@ -14,7 +14,9 @@ class TodoViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        return self.queryset.filter(author=self.request.user)
+        friends_id = [friend.id for friend in self.request.user.friends.all()]
+        friends_id.append(self.request.user.id)
+        return self.queryset.filter(author_id__in=friends_id)
 
     def create(self, request, *args, **kwargs):
         obj = Todo.objects.create(
