@@ -6,18 +6,26 @@ import { Dimmer, Icon, Button } from 'semantic-ui-react';
 
 
 class UserFullModal extends Component {
+    componentDidMount(){
+        this.props.fetchUserInfo().then(() => {
+            if(this.props.user.id){
+                this.props.fetchTodoList();
+            }
+        });
+    };
+
     handleClose = () => {
         this.props.handleClose();
     };
 
     renderContent = () => {
-        if(this.props.isAuthenticated){
+        if(typeof(this.props.user.id) === 'undefined'){
             return (
-                <Button negative>로그아웃</Button>
+                <span>WHO ARe YOU</span>
             )
         }else{
             return (
-                <span>WHO ARe YOU</span>
+                <Button negative>로그아웃</Button>
             )
         }
     };

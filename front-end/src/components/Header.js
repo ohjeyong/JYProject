@@ -3,7 +3,7 @@
  */
 import React, { Component } from 'react';
 import { Button } from 'semantic-ui-react';
-import UserFullModal from './UserFullModal';
+import UserFullModalContainer from '../containers/UserFullModalContainer';
 
 class Header extends Component {
     constructor(props){
@@ -11,13 +11,6 @@ class Header extends Component {
         this.state = {
             userModalActive: false
         }
-    }
-    componentDidMount(){
-        this.props.fetchUserInfo().then(() => {
-            if(this.props.user.id){
-                this.props.fetchTodoList();
-            }
-        });
     }
 
     closeUserFullModal = () => {
@@ -29,8 +22,7 @@ class Header extends Component {
     render() {
         return (
             <div className="Header">
-                <UserFullModal
-                    isAuthenticated={"undefined" !== typeof(this.props.user.id)}
+                <UserFullModalContainer
                     active={this.state.userModalActive}
                     handleClose={this.closeUserFullModal}
                 />
