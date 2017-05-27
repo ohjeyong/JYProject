@@ -139,6 +139,7 @@ body {
     z-index: 1;
     cursor: pointer;
     user-select: none;
+    -webkit-tap-highlight-color: transparent;
 }
 .FilterWrapper .FilterUpper .CategoryMovingBorder{
     position: absolute;
@@ -221,6 +222,9 @@ body {
     border-bottom: 1px solid white;
     cursor: pointer;
     user-select: none;
+}
+.LoginSignupWrapper .LoginSignupSelector > div{
+    -webkit-tap-highlight-color: transparent;
 }
 .LoginSignupWrapper .LoginSignupSelector > div.active{
     color: white;
