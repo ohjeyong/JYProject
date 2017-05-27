@@ -12,6 +12,7 @@ export const REVERT_COMPLETE_TODO = 'revert_complete_todo';
 export const REMOVE_TODO = 'remove_todo';
 export const ADD_LIKE = 'add_like';
 export const ADD_TODO = 'add_todo';
+export const CLEAR_TODO_LIST = 'clear_todo_list';
 
 export const SHOW_TODO_INPUT = 'show_todo_input';
 export const HIDE_TODO_INPUT = 'hide_todo_input';
@@ -26,6 +27,7 @@ export const FILTER_SEARCH_INPUT = 'filter_search_input';
 export const FETCH_TAG_LIST = 'fetch_tag_list';
 
 export const FETCH_USER_INFO = 'fetch_user_info';
+export const LOGOUT = 'logout';
 
 export function fetchTodoList(){
     const request = axios.get('/api/todo/');
@@ -77,6 +79,12 @@ export function addLike(id){
 export function showTodoInput(){
     return {
         type: SHOW_TODO_INPUT,
+    }
+}
+
+export function clearTodoList(){
+    return {
+        type: CLEAR_TODO_LIST
     }
 }
 
@@ -140,6 +148,14 @@ export function fetchUserInfo(){
     const request = axios.get('/api/user/me');
     return {
         type: FETCH_USER_INFO,
+        payload: request
+    }
+}
+
+export function logout(){
+    const request = axios.get('/api/user/logout');
+    return {
+        type: LOGOUT,
         payload: request
     }
 }

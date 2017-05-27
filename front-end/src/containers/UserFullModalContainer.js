@@ -3,7 +3,7 @@
  */
 import { connect } from 'react-redux';
 import UserFullModal from '../components/UserFullModal';
-import { fetchUserInfo, fetchTodoList } from '../actions';
+import { fetchUserInfo, fetchTodoList, logout, clearTodoList } from '../actions';
 
 
 function mapStateToProps(state){
@@ -12,4 +12,4 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps, { fetchUserInfo, fetchTodoList })(UserFullModal);
+export default connect(mapStateToProps, { fetchUserInfo, fetchTodoList, logout, clearTodoList })(UserFullModal);
