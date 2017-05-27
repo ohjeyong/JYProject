@@ -137,6 +137,7 @@ body {
     color: gray;
     transition: color 0.5s;
     z-index: 1;
+    cursor: pointer;
 }
 .FilterWrapper .FilterUpper .CategoryMovingBorder{
     position: absolute;
@@ -217,6 +218,7 @@ body {
     color: #555555;
     padding: 10px;
     border-bottom: 1px solid white;
+    cursor: pointer;
 }
 .LoginSignupWrapper .LoginSignupSelector > div.active{
     color: white;

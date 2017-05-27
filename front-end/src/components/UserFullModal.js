@@ -188,7 +188,8 @@ class UserFullModal extends Component {
                     style={{
                         position: 'absolute',
                         top: '10px',
-                        right: '10px'
+                        right: '10px',
+                        cursor: 'pointer'
                     }}
                     onClick={() => {this.handleClose()}}>
                     <Icon
