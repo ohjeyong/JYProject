@@ -1,4 +1,4 @@
-from django.contrib.auth import logout
+from django.contrib.auth import logout, authenticate, login
 
 from rest_framework import status
 from rest_framework import viewsets
@@ -55,3 +55,15 @@ class UserViewSet(viewsets.ModelViewSet):
     def logout(self, request):
         logout(request)
         return Response(None)
+
+    @list_route(methods=["POST"])
+    def login(self, request):
+        username = request.data['id']
+        password = request.data['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            serializer = self.get_serializer(user)
+            return Response(serializer.data)
+        else:
+            return Response({"error": "아이디나 패스워드가 올바르지 않습니다."})
