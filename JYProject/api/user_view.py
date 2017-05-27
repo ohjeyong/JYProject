@@ -14,7 +14,8 @@ class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     queryset = User.objects.all()
 
-    def create(self, request, *args, **kwargs):
+    @list_route(methods=["POST"])
+    def signup(self, request, *args, **kwargs):
         password2 = request.data.pop('password2')
         if password2 != request.data['password']:
             return Response({"error": {"password": ["password1 and password2 is not same."]}})
@@ -23,9 +24,13 @@ class UserViewSet(viewsets.ModelViewSet):
             serializer.is_valid(raise_exception=True)
             serializer.save()
             headers = self.get_success_headers(serializer.data)
+            login(request, User.objects.get(id=serializer.data['id']))
             return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
         except ValidationError as e:
             return Response({"error": e.detail})
+
+    def create(self, request, *args, **kwargs):
+        return Response(status=status.HTTP_404_NOT_FOUND)
 
     def list(self, request, *args, **kwargs):
         return Response(status=status.HTTP_404_NOT_FOUND)
@@ -58,7 +63,7 @@ class UserViewSet(viewsets.ModelViewSet):
 
     @list_route(methods=["POST"])
     def login(self, request):
-        username = request.data['id']
+        username = request.data['username']
         password = request.data['password']
         user = authenticate(request, username=username, password=password)
         if user is not None:
