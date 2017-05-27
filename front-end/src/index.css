@@ -201,7 +201,36 @@ body {
     text-decoration: underline;
     background: none;
 }
-
-
-
-
+.LoginSignupWrapper {
+    height: 60%;
+    padding: 0 10px;
+}
+.LoginSignupWrapper .LoginSignupSelector{
+    display: flex;
+}
+.LoginSignupWrapper .LoginSignupSelector > div{
+    flex: 1;
+    display: flex;
+    font-size: 2rem;
+    align-items: center;
+    justify-content: center;
+    color: #555555;
+    padding: 10px;
+    border-bottom: 1px solid white;
+}
+.LoginSignupWrapper .LoginSignupSelector > div.active{
+    color: white;
+    border: 1px solid white;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom: none;
+}
+.LoginSignupWrapper .LoginSignupContent {
+    border: 1px solid white;
+    border-top: none;
+    padding: 20px;
+    text-align: left;
+}
+.LoginSignupWrapper .LoginSignupContent .fields > .field.wide.sixteen {
+    margin-bottom: 20px !important;
+}

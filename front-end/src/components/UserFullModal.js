@@ -132,7 +132,7 @@ class UserFullModal extends Component {
             return (
                 <Form inverted>
                     <Form.Group>
-                        <Form.Input label="아이디" placeholder="아이디를 입력해주세요." width={16}
+                        <Form.Input label="아이디" placeholder="이메일 형식입니다." width={16}
                                     onChange={this.handleLoginSignupChange}
                                     value={this.state.signupId}
                                     name="signupId"
@@ -142,7 +142,7 @@ class UserFullModal extends Component {
                                     value={this.state.signupName}
                                     name="signupName"
                         />
-                        <Form.Input label="비밀번호" placeholder="비밀번호를 입력해주세요." width={16} type="password"
+                        <Form.Input label="비밀번호" placeholder="문자, 숫자 조합 8자리 이상입니다." width={16} type="password"
                                     onChange={this.handleLoginSignupChange}
                                     value={this.state.signupPassword}
                                     name="signupPassword"
@@ -162,12 +162,12 @@ class UserFullModal extends Component {
     renderContent = () => {
         if(typeof(this.props.user.id) === 'undefined'){
             return (
-                <div>
-                    <div>
-                        <div onClick={() => this.setState({ showLoginForm: true })}>Login</div>
-                        <div onClick={() => this.setState({ showLoginForm: false })}>SignUp</div>
+                <div className="LoginSignupWrapper">
+                    <div className="LoginSignupSelector">
+                        <div className={this.state.showLoginForm ? 'active': ''} onClick={() => this.setState({ showLoginForm: true })}>Login</div>
+                        <div className={this.state.showLoginForm ? '': 'active'} onClick={() => this.setState({ showLoginForm: false })}>SignUp</div>
                     </div>
-                    <div>
+                    <div className="LoginSignupContent">
                         { this.renderLoginSignupForm() }
                     </div>
                 </div>
