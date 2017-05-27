@@ -29,6 +29,7 @@ export const FETCH_TAG_LIST = 'fetch_tag_list';
 export const FETCH_USER_INFO = 'fetch_user_info';
 export const LOGOUT = 'logout';
 export const LOGIN = 'login';
+export const SIGNUP = 'signup';
 
 export function fetchTodoList(){
     const request = axios.get('/api/todo/');
@@ -165,6 +166,14 @@ export function login(data){
     const request = axios.post('/api/user/login/', data);
     return {
         type: LOGIN,
+        payload: request
+    }
+}
+
+export function signup(data){
+    const request = axios.post('/api/user/signup/', data);
+    return {
+        type: SIGNUP,
         payload: request
     }
 }

@@ -1,6 +1,7 @@
 /**
  * Created by oh on 5/26/17.
  */
+import _ from 'lodash';
 import React, { Component } from 'react';
 import { Dimmer, Icon, Button, Form } from 'semantic-ui-react';
 
@@ -55,7 +56,7 @@ class UserFullModal extends Component {
     handleClickLoginButton = (e) => {
         e.preventDefault();
         this.props.login({
-            id: this.state.loginId,
+            username: this.state.loginId,
             password: this.state.loginPassword
         }).then(() => {
             if(this.props.user.error){
@@ -78,13 +79,21 @@ class UserFullModal extends Component {
     handleClickSignupButton = (e) => {
         e.preventDefault();
         this.props.signup({
-            id: this.state.signupId,
+            username: this.state.signupId,
             name: this.state.signupName,
             password: this.state.signupPassword,
             password2: this.state.signupPassword2
         }).then(() => {
             if(this.props.user.error){
-                this.showAlert(this.props.user.error);
+                let errorMsg = '';
+                _.forIn(this.props.user.error, (value, key) => {
+                    let innerErrorMsg = '';
+                    _.forEach(value, (eachValue) => {
+                        innerErrorMsg += eachValue + ', ';
+                    });
+                    errorMsg += `${key}: ${innerErrorMsg}`;
+                });
+                this.showAlert(errorMsg);
             }else{
                 this.handleClose();
                 this.setState({

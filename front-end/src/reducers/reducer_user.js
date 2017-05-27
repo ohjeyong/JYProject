@@ -1,7 +1,7 @@
 /**
  * Created by oh on 5/25/17.
  */
-import { FETCH_USER_INFO, LOGOUT, LOGIN } from '../actions';
+import { FETCH_USER_INFO, LOGOUT, LOGIN, SIGNUP } from '../actions';
 
 
 export default function (state={}, action){
@@ -11,6 +11,8 @@ export default function (state={}, action){
         case LOGOUT:
             return {};
         case LOGIN:
+            return action.payload.data;
+        case SIGNUP:
             return action.payload.data;
         default:
             return state
