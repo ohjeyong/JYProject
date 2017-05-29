@@ -15,13 +15,16 @@ class TodoCommentInput extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         if(this.state.content !== ''){
-            console.log(this.state.content);
+            this.props.addTodoComment({
+                content: this.state.content,
+                todoId: this.props.todo.id
+            });
             this.setState({
-                content: '',
-                todo: this.props.todo.id
+                content: ''
             })
         }
     };
+
     render() {
         return (
             <Form onSubmit={this.handleSubmit}>

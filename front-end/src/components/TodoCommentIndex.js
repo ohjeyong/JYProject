@@ -5,12 +5,13 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { Comment } from 'semantic-ui-react';
 import TimeAgo from 'timeago-react';
-import TodoCommentInput from './TodoCommentInput';
+import TodoCommentInputContainer from '../containers/TodoCommentInputContainer';
 
 
 class TodoCommentIndex extends Component {
     renderCommentList = () => {
-        return _.map(this.props.todo.todo_comment_list, eachComment => {
+        let orderedCommentList = _.orderBy(this.props.todo.todo_comment_list, ['id'], ['asc']);
+        return _.map(orderedCommentList, eachComment => {
             return (
                 <Comment key={ eachComment.id }>
                     {/*<Comment.Avator src="/JYProject/static/user.png" />*/}
@@ -33,7 +34,7 @@ class TodoCommentIndex extends Component {
                     { this.renderCommentList() }
                 </Comment.Group>
                 <div className="TodoCommentInputWrapper">
-                    <TodoCommentInput todo={ this.props.todo } />
+                    <TodoCommentInputContainer todo={ this.props.todo } />
                 </div>
             </div>
         )
