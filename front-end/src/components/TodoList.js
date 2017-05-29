@@ -9,6 +9,13 @@ import TodoCommentIndex from './TodoCommentIndex';
 
 
 class TodoList extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            showCommentList: false
+        }
+    }
+
     renderRightWrapper = (todo) => {
         if(todo.is_completed) {
             return (
@@ -74,12 +81,24 @@ class TodoList extends Component {
         )
     };
 
+    renderCommentList = () => {
+        if(this.state.showCommentList){
+            return (
+                <div>
+                    <Divider className="CommentDivider" />
+                    <TodoCommentIndex todo={this.props.todo} />
+                </div>
+            )
+        }else{
+            return null
+        }
+    };
+
     render() {
         return (
             <li className={`TodoLi bounceIn animated ${this.props.todo.is_completed ? 'complete': ''}`}>
                 <div className="TodoWrapper">
                     <div className="TodoLeftWrapper">
-                        <div className="mask"></div>
                         <div className="upper">
                             {this.renderCategoryIcon(this.props.todo)}
                             <span onClick={() => this.props.addLike(this.props.todo.id)} className="like">
@@ -91,7 +110,7 @@ class TodoList extends Component {
                             { this.renderTags() }
                         </div>
                         <div className="lower">
-                            <span className="CommentToggle">댓글 ({this.props.todo.todo_comment_list.length})</span>
+                            <span onClick={() => this.setState({showCommentList: !this.state.showCommentList})} className="CommentToggle">댓글 ({this.props.todo.todo_comment_list.length})</span>
                             <span>
                             <TimeAgo datetime={ this.props.todo.created_at } locale="ko" />
                             <Icon style={{marginLeft: '10px'}} name="user" />{ this.props.todo.author_data.name }
@@ -102,8 +121,7 @@ class TodoList extends Component {
                         {this.renderRightWrapper(this.props.todo)}
                     </div>
                 </div>
-                <Divider className="CommentDivider" />
-                <TodoCommentIndex todo={this.props.todo} />
+                { this.renderCommentList() }
             </li>
         )
     }
