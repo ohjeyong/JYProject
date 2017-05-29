@@ -32,6 +32,7 @@ export const LOGIN = 'login';
 export const SIGNUP = 'signup';
 
 export const ADD_TODO_COMMENT = 'add_todo_comment';
+export const REMOVE_TODO_COMMENT = 'remove_todo_comment';
 
 export function fetchTodoList(){
     const request = axios.get('/api/todo/');
@@ -184,6 +185,14 @@ export function addTodoComment(data){
     const request = axios.post('/api/todo-comment/', data);
     return {
         type: ADD_TODO_COMMENT,
+        payload: request
+    }
+}
+
+export function removeTodoComment(id){
+    const request = axios.delete(`/api/todo-comment/${id}`);
+    return {
+        type: REMOVE_TODO_COMMENT,
         payload: request
     }
 }
