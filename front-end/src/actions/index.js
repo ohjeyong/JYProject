@@ -31,6 +31,8 @@ export const LOGOUT = 'logout';
 export const LOGIN = 'login';
 export const SIGNUP = 'signup';
 
+export const ADD_TODO_COMMENT = 'add_todo_comment';
+
 export function fetchTodoList(){
     const request = axios.get('/api/todo/');
 
@@ -174,6 +176,14 @@ export function signup(data){
     const request = axios.post('/api/user/signup/', data);
     return {
         type: SIGNUP,
+        payload: request
+    }
+}
+
+export function addTodoComment(data){
+    const request = axios.post('/api/todo-comment/', data);
+    return {
+        type: ADD_TODO_COMMENT,
         payload: request
     }
 }
