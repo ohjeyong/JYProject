@@ -36,7 +36,7 @@ class TodoCommentSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = TodoComment
-        fields = ('id', 'author', 'author_data', 'content', 'created_at')
+        fields = ('id', 'todo', 'author_data', 'content', 'created_at')
 
     def get_author_data(self, obj):
         return UserSerializer(obj.author, read_only=True).data

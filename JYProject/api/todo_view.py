@@ -4,8 +4,8 @@ from rest_framework.decorators import detail_route
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
-from JYProject.todo.models import Todo, Tag
-from .todo_serializer import TodoSerializer, TagSerializer
+from JYProject.todo.models import Todo, Tag, TodoComment
+from .todo_serializer import TodoSerializer, TagSerializer, TodoCommentSerializer
 
 
 class TodoViewSet(viewsets.ModelViewSet):
@@ -56,6 +56,29 @@ class TodoViewSet(viewsets.ModelViewSet):
         todo = self.get_object()
         todo.add_like()
         return Response(self.get_serializer(todo).data)
+
+
+class TodoCommentViewSet(viewsets.ModelViewSet):
+    serializer_class = TodoCommentSerializer
+    queryset = TodoComment.objects.all()
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        friends_id = [each.id for each in self.request.user.friends.all()]
+        friends_id.append(self.request.user.id)
+        return self.queryset.filter(author_id__in=friends_id)
+
+    def list(self, request, *args, **kwargs):
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    def create(self, request, *args, **kwargs):
+        obj = TodoComment.objects.create(
+            author=request.user,
+            content=request.data['content'],
+            todo_id=request.data['todoId']
+        )
+        # WARNING: It does not return todo comment. It Return todo object.
+        return Response(TodoSerializer(obj.todo).data, status=status.HTTP_201_CREATED)
 
 
 class TagListView(generics.ListAPIView):

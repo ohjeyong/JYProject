@@ -5,6 +5,7 @@ from . import todo_view, user_view
 
 router = routers.DefaultRouter()
 router.register(r'todo', todo_view.TodoViewSet)
+router.register(r'todo-comment', todo_view.TodoCommentViewSet)
 router.register(r'user', user_view.UserViewSet)
 
 urlpatterns = [
