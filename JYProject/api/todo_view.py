@@ -80,6 +80,12 @@ class TodoCommentViewSet(viewsets.ModelViewSet):
         # WARNING: It does not return todo comment. It Return todo object.
         return Response(TodoSerializer(obj.todo).data, status=status.HTTP_201_CREATED)
 
+    def destroy(self, request, *args, **kwargs):
+        instance = self.get_object()
+        todo = instance.todo
+        self.perform_destroy(instance)
+        return Response(TodoSerializer(todo).data, status=status.HTTP_204_NO_CONTENT)
+
 
 class TagListView(generics.ListAPIView):
     queryset = Tag.objects.all()
