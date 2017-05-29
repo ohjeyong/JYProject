@@ -103,7 +103,7 @@ class TodoList extends Component {
                     </div>
                 </div>
                 <Divider className="CommentDivider" />
-                <TodoCommentIndex comments={this.props.todo.todo_comment_list} />
+                <TodoCommentIndex todo={this.props.todo} />
             </li>
         )
     }

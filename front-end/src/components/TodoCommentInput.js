@@ -17,7 +17,8 @@ class TodoCommentInput extends Component {
         if(this.state.content !== ''){
             console.log(this.state.content);
             this.setState({
-                content: ''
+                content: '',
+                todo: this.props.todo.id
             })
         }
     };

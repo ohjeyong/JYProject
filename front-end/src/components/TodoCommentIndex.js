@@ -10,7 +10,7 @@ import TodoCommentInput from './TodoCommentInput';
 
 class TodoCommentIndex extends Component {
     renderCommentList = () => {
-        return _.map(this.props.comments, eachComment => {
+        return _.map(this.props.todo.todo_comment_list, eachComment => {
             return (
                 <Comment key={ eachComment.id }>
                     {/*<Comment.Avator src="/JYProject/static/user.png" />*/}
@@ -33,7 +33,7 @@ class TodoCommentIndex extends Component {
                     { this.renderCommentList() }
                 </Comment.Group>
                 <div className="TodoCommentInputWrapper">
-                    <TodoCommentInput />
+                    <TodoCommentInput todo={ this.props.todo } />
                 </div>
             </div>
         )
