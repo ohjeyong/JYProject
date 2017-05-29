@@ -89,9 +89,10 @@ class TodoList extends Component {
                         { this.renderTags() }
                     </div>
                     <div className="lower">
-                        <TimeAgo datetime={ this.props.todo.created_at } locale="ko" />
-                        <span style={{float: 'right'}}>
-                            <Icon name="user" />{ this.props.todo.author_data.name }
+                        <span className="CommentToggle">댓글 ({this.props.todo.todo_comment_list.length})</span>
+                        <span>
+                            <TimeAgo datetime={ this.props.todo.created_at } locale="ko" />
+                            <Icon style={{marginLeft: '10px'}} name="user" />{ this.props.todo.author_data.name }
                         </span>
                     </div>
                 </div>

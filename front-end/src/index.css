@@ -78,6 +78,8 @@ body {
     font-size: 1.1rem;
 }
 .TodoUl .TodoLi .TodoLeftWrapper .lower{
+    display: flex;
+    justify-content: space-between;
     height: 30px;
     line-height: 30px;
     font-size: 0.9rem;
@@ -241,4 +243,9 @@ body {
 }
 .LoginSignupWrapper .LoginSignupContent .fields > .field.wide.sixteen {
     margin-bottom: 20px !important;
+}
+
+.TodoLeftWrapper .lower .CommentToggle {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
 }
