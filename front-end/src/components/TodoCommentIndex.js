@@ -3,8 +3,9 @@
  */
 import _ from 'lodash';
 import React, { Component } from 'react';
-import { Comment, Form } from 'semantic-ui-react';
+import { Comment } from 'semantic-ui-react';
 import TimeAgo from 'timeago-react';
+import TodoCommentInput from './TodoCommentInput';
 
 
 class TodoCommentIndex extends Component {
@@ -24,6 +25,7 @@ class TodoCommentIndex extends Component {
             )
         })
     };
+
     render() {
         return (
             <div className="TodoCommentWrapper">
@@ -31,9 +33,7 @@ class TodoCommentIndex extends Component {
                     { this.renderCommentList() }
                 </Comment.Group>
                 <div className="TodoCommentInputWrapper">
-                    <Form>
-                        <Form.Input action="쓰기" />
-                    </Form>
+                    <TodoCommentInput />
                 </div>
             </div>
         )
