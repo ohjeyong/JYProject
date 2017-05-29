@@ -84,7 +84,7 @@ class TodoCommentViewSet(viewsets.ModelViewSet):
         instance = self.get_object()
         todo = instance.todo
         self.perform_destroy(instance)
-        return Response(TodoSerializer(todo).data, status=status.HTTP_204_NO_CONTENT)
+        return Response(TodoSerializer(todo).data)
 
 
 class TagListView(generics.ListAPIView):
