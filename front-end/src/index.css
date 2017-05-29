@@ -21,13 +21,14 @@ body {
 .TodoUl .TodoLi{
     margin: 10px 0;
     display: flex;
-    align-items: center;
+    flex-flow: column;
     background: #FFF;
     border-radius: .28571429rem;
     box-shadow: 0 1px 3px 0 #D4D4D5, 0 0 0 1px #D4D4D5;
 }
-.TodoUl .TodoLi.complete{
-    box-shadow: none;
+.TodoUl .TodoLi .TodoWrapper{
+    display: flex;
+    align-items: center;
 }
 .TodoUl .TodoLi .TodoLeftWrapper{
     flex: 4;
@@ -248,4 +249,23 @@ body {
 .TodoLeftWrapper .lower .CommentToggle {
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
+}
+.TodoUl .TodoLi .CommentDivider {
+    margin: 0;
+    border-bottom: none !important;
+}
+.TodoUl .TodoLi .TodoCommentWrapper {
+    background-color: #f8f8f8;
+    padding: 10px 15px 5px 15px;
+    font-size: 0.7rem;
+}
+.TodoUl .TodoLi .TodoCommentWrapper .TodoCommentInputWrapper .ui.action.input > input{
+    padding: 3px 5px;
+    font-size: 0.7rem;
+}
+.TodoUl .TodoLi .TodoCommentWrapper .TodoCommentInputWrapper .ui.action.input > .ui.button{
+    padding: 3px;
+    font-size: 0.7rem;
+    justify-content: center;
+    width: 20%;
 }

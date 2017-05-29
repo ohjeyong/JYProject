@@ -3,8 +3,9 @@
  */
 import _ from 'lodash';
 import React, { Component } from 'react';
-import { Icon, Label, Button } from 'semantic-ui-react';
+import { Icon, Label, Button, Divider } from 'semantic-ui-react';
 import TimeAgo from 'timeago-react';
+import TodoCommentIndex from './TodoCommentIndex';
 
 
 class TodoList extends Component {
@@ -76,29 +77,33 @@ class TodoList extends Component {
     render() {
         return (
             <li className={`TodoLi bounceIn animated ${this.props.todo.is_completed ? 'complete': ''}`}>
-                <div className="TodoLeftWrapper">
-                    <div className="mask"></div>
-                    <div className="upper">
-                        {this.renderCategoryIcon(this.props.todo)}
-                        <span onClick={() => this.props.addLike(this.props.todo.id)} className="like">
+                <div className="TodoWrapper">
+                    <div className="TodoLeftWrapper">
+                        <div className="mask"></div>
+                        <div className="upper">
+                            {this.renderCategoryIcon(this.props.todo)}
+                            <span onClick={() => this.props.addLike(this.props.todo.id)} className="like">
                             <Icon name="like" />{ this.props.todo.like }
                         </span>
-                        <div className="TodoContent">
-                            { this.props.todo.content }
+                            <div className="TodoContent">
+                                { this.props.todo.content }
+                            </div>
+                            { this.renderTags() }
                         </div>
-                        { this.renderTags() }
-                    </div>
-                    <div className="lower">
-                        <span className="CommentToggle">댓글 ({this.props.todo.todo_comment_list.length})</span>
-                        <span>
+                        <div className="lower">
+                            <span className="CommentToggle">댓글 ({this.props.todo.todo_comment_list.length})</span>
+                            <span>
                             <TimeAgo datetime={ this.props.todo.created_at } locale="ko" />
                             <Icon style={{marginLeft: '10px'}} name="user" />{ this.props.todo.author_data.name }
                         </span>
+                        </div>
+                    </div>
+                    <div className="TodoRightWrapper">
+                        {this.renderRightWrapper(this.props.todo)}
                     </div>
                 </div>
-                <div className="TodoRightWrapper">
-                    {this.renderRightWrapper(this.props.todo)}
-                </div>
+                <Divider className="CommentDivider" />
+                <TodoCommentIndex comments={this.props.todo.todo_comment_list} />
             </li>
         )
     }
