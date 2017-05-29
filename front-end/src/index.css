@@ -246,6 +246,11 @@ body {
     padding: 10px 15px 5px 15px;
     font-size: 0.7rem;
 }
+.TodoUl .TodoLi .TodoCommentWrapper .TodoComment {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 .TodoUl .TodoLi .TodoCommentWrapper .TodoCommentInputWrapper .ui.action.input > input{
     padding: 3px 5px;
     font-size: 0.7rem;
@@ -255,4 +260,7 @@ body {
     font-size: 0.7rem;
     justify-content: center;
     width: 20%;
+}
+.TodoUl .TodoLi .TodoCommentWrapper .TodoCommentRemoveButton {
+    padding: 4px;
 }

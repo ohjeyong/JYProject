@@ -5,7 +5,7 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { Icon, Label, Button, Divider } from 'semantic-ui-react';
 import TimeAgo from 'timeago-react';
-import TodoCommentIndex from './TodoCommentIndex';
+import TodoCommentIndexContainer from '../containers/TodoCommentIndexContainer';
 
 
 class TodoList extends Component {
@@ -86,7 +86,7 @@ class TodoList extends Component {
             return (
                 <div>
                     <Divider className="CommentDivider" />
-                    <TodoCommentIndex todo={this.props.todo} />
+                    <TodoCommentIndexContainer todo={this.props.todo} />
                 </div>
             )
         }else{
