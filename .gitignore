@@ -11,3 +11,6 @@ __pycache__
 /JYProject/media/
 .idea/
 stroot/
+
+*.pyc
+
