@@ -4,10 +4,8 @@ import sys
 from JYProject.config.settings.base import *
 
 if __name__ == "__main__":
-    if STAGE == 'PRODUCTION':
-        os.environ["DJANGO_SETTINGS_MODULE"] = "JYProject.config.settings.production"
-    else:
-        os.environ.setdefault("DJANGO_SETTINGS_MODULE", "JYProject.config.settings.dev")
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "JYProject.config.settings.dev")
+
     try:
         from django.core.management import execute_from_command_line
     except ImportError:
@@ -24,3 +22,4 @@ if __name__ == "__main__":
             )
         raise
     execute_from_command_line(sys.argv)
+
