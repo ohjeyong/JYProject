@@ -10,6 +10,9 @@ STATICFILES_DIRS += [
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'stroot')
 
+MIDDLEWARE_CLASSES.append('whitenoise.middleware.WhiteNoiseMiddleware')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 import django_heroku
 django_heroku.settings(locals())
