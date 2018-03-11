@@ -15,7 +15,7 @@ from JYProject.config.settings.base import *
 if STAGE == 'PRODUCTION':
     os.environ["DJANGO_SETTINGS_MODULE"] = "JYProject.config.settings.production"
 else:
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "JYProject.config.settings.dev")
+    os.environ["DJANGO_SETTINGS_MODULE"] = "JYProject.config.settings.dev"
 
 
 application = get_wsgi_application()

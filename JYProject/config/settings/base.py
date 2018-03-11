@@ -10,7 +10,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
-import json
 import os
 
 from django.core.exceptions import ImproperlyConfigured
@@ -23,19 +22,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-with open("{}/{}".format(os.path.dirname(BASE_DIR), 'django_config.json')) as f:
-    secrets = json.loads(f.read())
-
-
-def get_config(settings, config_file=secrets):
+def get_env_variables(var_name):
     try:
-        return config_file[settings]
+        return os.environ[var_name]
     except KeyError:
-        raise ImproperlyConfigured("Set the {} environment variable.".format(settings))
+        error_msg = "Set this {} environment variable.".format(var_name)
+        raise ImproperlyConfigured(error_msg)
 
-STAGE = get_config('STAGE')
 
-SECRET_KEY = get_config("SECRET_KEY")
+SECRET_KEY = get_env_variables("SECRET_KEY")
 
 # Application definition
 
