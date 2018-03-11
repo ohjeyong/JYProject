@@ -1,2 +1,2 @@
-web: gunicorn JYProject.config.wsgi
+web: gunicorn JYProject.config.wsgi --log-file -
 
