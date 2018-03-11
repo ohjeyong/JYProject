@@ -3,19 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "axios": "^0.16.1",
+    "axios": "^0.18.0",
     "lodash": "^4.17.4",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
     "react-redux": "^5.0.4",
     "react-tag-input": "^4.7.2",
     "redux": "^3.6.0",
     "redux-promise": "^0.5.3",
-    "semantic-ui-react": "^0.68.3",
-    "timeago-react": "^1.1.0"
+    "semantic-ui-react": "^0.78.3",
+    "timeago-react": "^2.0.0"
   },
   "devDependencies": {
-    "react-scripts": "0.9.5"
+    "react-scripts": "1.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
